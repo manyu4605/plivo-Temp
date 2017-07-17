@@ -1,0 +1,10 @@
+class Gvars():
+    https_proxy="web-proxy.ind.hp.com:8080"
+    APIBaseURL="https://api.plivo.com/"
+    APIVersion="v1/"
+    searchingAPI="Account/%s/PhoneNumber/"
+    buyingAPI="Account/%s/PhoneNumber/%s/"
+    messageAPI="Account/%s/Message/"
+    detailsAPI="Account/%s/Message/%s/"
+    pricingAPI="Account/%s/Pricing/"
+    accountDetailsAPI="Account/%s/"
