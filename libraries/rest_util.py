@@ -11,12 +11,11 @@ from globalVariables import Gvars
 import json
 import requests
 
-
 class SendRest():
 
     def __init__(self, auth_id , auth_token):
         self.url = ''
-        self.headers = {'content-type': 'application/json'}
+        self.headers = {}
         self.data = {}
         self.auth_id = auth_id
         self.auth_token = auth_token
@@ -27,40 +26,32 @@ class SendRest():
             response = requests.get(url=self.url, params=self.data,\
                                     headers=self.headers,auth=(self.auth_id,self.auth_token)\
                                     ,proxies={'https':self.proxy})
+            return (response.status_code, json.loads(response.text))
         except Exception as e:
             print "INFO:%s , error:%s"%(self.__dict__ ,e.__doc__)
             return -1,-1
-        return(response.status_code, response.content)
 
     def put(self):
         try :
             response = requests.put(url=self.url, data=json.dumps(self.data),\
                                     headers=self.headers, verify=False,\
                                     proxies={'https':''})
+            return (response.status_code, json.loads(response.text))
+
         except Exception as e:
-            print "PUT opertaion failed info :\n\
-                   URL : %s\n\
-                   DATA: %s\n\
-                   HEADERS: %s\n\
-                   ERROR: %s\
-                  "%(self.url,headers, data,e.__doc__)
-
+            print "INFO:%s , error:%s"%(self.__dict__ ,e.__doc__)
             return -1,-1
-
-        return (response.status_code, response.__dict__["_content"])
-
 
     def delete(self):
         try :
             response = requests.delete(url=self.url, params=self.data,\
                                        headers=self.headers,auth=(self.auth_id,self.auth_token)\
                                        ,proxies={'https':self.proxy})
+            return (response.status_code, json.loads(response.text))
 
         except Exception as e:
             print "INFO:%s , error:%s"%(self.__dict__ ,e.__doc__)
             return -1,-1
-
-        return(response.status_code, response.content)
 
 
     def post(self):
@@ -68,12 +59,10 @@ class SendRest():
             response = requests.post(url=self.url, data=json.dumps(self.data),\
                                      headers=self.headers,auth=(self.auth_id,self.auth_token),\
                                      proxies={'https':self.proxy})
-            print response.url
+            return (response.status_code,json.loads(response.text))
         except Exception as e:
             print "INFO:%s , error:%s"%(self.__dict__ ,e.__doc__)
             return -1,-1
-
-        return (response.status_code,response.__dict__["_content"])
 
 def main ():
     myCaller = SendRest('MAMDA3OTQ5NGI1OWE4NG','NWY4NmQzZGNhYWM2YTFiMmJmZDRjMTgwMmRlMmZj')
