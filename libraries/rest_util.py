@@ -14,10 +14,10 @@ import requests
 class SendRest():
 
     def __init__(self, auth_id , auth_token):
-    """
-    :Mandatory Param: Auth_id
-    :Mandatory Param: Auth_token
-    """
+        """
+        :Mandatory Param: Auth_id
+        :Mandatory Param: Auth_token
+        """
         self.url = ''
         self.headers = {}
         self.data = {}
@@ -26,12 +26,12 @@ class SendRest():
         self.proxy = Gvars.https_proxy
 
     def get(self):
-    """
-    For GET operation
-    Passes data as query params
-    :returns code , data when Success:
-    :return -1 -1 , when Failure:
-    """
+        """
+        For GET operation
+        Passes data as query params
+        :returns code , data when Success:
+        :return -1 -1 , when Failure:
+        """
         try :
             response = requests.get(url=self.url, params=self.data,\
                                     headers=self.headers,auth=(self.auth_id,self.auth_token)\
@@ -42,12 +42,12 @@ class SendRest():
             return -1,-1
 
     def put(self):
-    """
-    For PUT operation
-    Passes data as Json
-    :returns code , data when Success:
-    :return -1 -1 , when Failure:
-    """
+        """
+        For PUT operation
+        Passes data as Json
+        :returns code , data when Success:
+        :return -1 -1 , when Failure:
+        """
         try :
             response = requests.put(url=self.url, data=json.dumps(self.data),\
                                     headers=self.headers, verify=False,\
@@ -59,12 +59,12 @@ class SendRest():
             return -1,-1
 
     def delete(self):
-    """
-    For DELETE operation
-    Passes data as query params
-    :returns code , data when Success:
-    :return -1 -1 , when Failure:
-    """
+        """
+        For DELETE operation
+        Passes data as query params
+        :returns code , data when Success:
+        :return -1 -1 , when Failure:
+        """
 
         try :
             response = requests.delete(url=self.url, params=self.data,\
@@ -78,12 +78,12 @@ class SendRest():
 
 
     def post(self):
-    """
-    For POST operation
-    Passes data as Json
-    :returns code , data when Success:
-    :return -1 -1 , when Failure:
-    """
+        """
+        For POST operation
+        Passes data as Json
+        :returns code , data when Success:
+        :return -1 -1 , when Failure:
+        """
         try :
             response = requests.post(url=self.url, data=json.dumps(self.data),\
                                      headers=self.headers,auth=(self.auth_id,self.auth_token),\
