@@ -1,5 +1,6 @@
 """
 Author : Abhimanyu Singh
+Desc : APIs for interaction with Plivo Cloud
 """
 
 import sys
@@ -30,7 +31,8 @@ class PlivoAPI():
         :param pattern: startng pattern
         :return: Code , Json Response
         """
-        self.restAPI.url = self.base_url + self.base_api_version + Gvars.searchingAPI%(self.auth)
+        self.restAPI.url = self.base_url + self.base_api_version +\
+                           Gvars.searchingAPI%(self.auth)
         self.restAPI.data = {"country_iso":country_iso,"pattern":pattern}
         self.restAPI.headers = self.headers
         return self.restAPI.get()
@@ -42,7 +44,8 @@ class PlivoAPI():
         :param number: Phone Number to buy
         :return: Code , Json Response
         """
-        self.restAPI.url = self.base_url + self.base_api_version + Gvars.buyingAPI%(self.auth,number)
+        self.restAPI.url = self.base_url + self.base_api_version + \
+                           Gvars.buyingAPI%(self.auth,number)
         self.restAPI.data = {}
         self.restAPI.headers = self.headers
         return self.restAPI.post()
@@ -55,7 +58,8 @@ class PlivoAPI():
         :param text: Message Text
         :return: Code , Json Response
         """
-        self.restAPI.url = self.base_url + self.base_api_version + Gvars.messageAPI%(self.auth)
+        self.restAPI.url = self.base_url + self.base_api_version +\
+                           Gvars.messageAPI%(self.auth)
         self.restAPI.data = {
                              "src":src,
                              "dst":dst,
@@ -70,7 +74,8 @@ class PlivoAPI():
         :param uuid: UUID returned from Message API
         :return: Code , Json Response
         """
-        self.restAPI.url = self.base_url + self.base_api_version + Gvars.detailsAPI%(self.auth,uuid)
+        self.restAPI.url = self.base_url + self.base_api_version +\
+                           Gvars.detailsAPI%(self.auth,uuid)
         self.restAPI.data = {}
         self.restAPI.headers = self.headers
         return self.restAPI.get()
@@ -82,7 +87,8 @@ class PlivoAPI():
         :param country_iso:Country Code Ex. US
         :return: Code , Json Response
         """
-        self.restAPI.url = self.base_url + self.base_api_version + Gvars.pricingAPI%(self.auth)
+        self.restAPI.url = self.base_url + self.base_api_version +\
+                           Gvars.pricingAPI%(self.auth)
         self.restAPI.data = {"country_iso":country_iso}
         self.restAPI.headers = self.headers
         return self.restAPI.get()
@@ -93,17 +99,8 @@ class PlivoAPI():
         Invoke Pilvo account Detail API
         :return: Code , Json Response
         """
-        self.restAPI.url = self.base_url + self.base_api_version + Gvars.accountDetailsAPI%(self.auth)
+        self.restAPI.url = self.base_url + self.base_api_version +\
+                           Gvars.accountDetailsAPI%(self.auth)
         self.restAPI.data = {}
         self.restAPI.headers = self.headers
         return self.restAPI.get()
-
-
-a = PlivoAPI("MAMDA3OTQ5NGI1OWE4NG","NWY4NmQzZGNhYWM2YTFiMmJmZDRjMTgwMmRlMmZj")
-#print a.searching("US",7692225329)
-#print a.buying(17692225329)
-#print a.message(17692225329,17692225328,"Hello World !")
-
-#print a.details("12149129-8de6-4f6c-9db2-03a2637ff780")
-#print a.pricing("US")
-print a.account_details()
