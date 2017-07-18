@@ -5,7 +5,7 @@ Desc : Global Variables needed to accomadate system Changes
 
 class Gvars():
     #System Proxy Details
-    https_proxy="web-proxy.ind.hp.com:8080"
+    https_proxy=""
 
     #API details
     APIBaseURL="https://api.plivo.com/"
